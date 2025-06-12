@@ -1,6 +1,9 @@
 import os
 
-restaurantes = ['Nono','Super']
+restaurantes = [{'nome':'Naruto Sushi', 'categoria':'Japonesa', 'ativo':False},
+                {'nome':'Pizza Superma', 'categoria':'Pizza', 'ativo':True},
+                {'nome':'Cantina', 'categoria':'Italiano', 'ativo':False}
+                ]
 
 def exibir_nome_do_programa():
     print('Sabor Express')
@@ -19,21 +22,41 @@ def cadastrar_restaurante():
     os.system('cls' if os.name == 'nt' else 'clear')
     print('Cadastro de restaurante')
     nome_restaurante = input('Digite o nome do restaurante: ')
-    restaurantes.append(nome_restaurante)
+    categoria = input(f'Digite o nome da categoria do restaurante {nome_restaurante}: ')
+    dados_do_restaurante = {'nome':nome_restaurante, 'categoria':categoria, 'ativo':False}
+    restaurantes.append(dados_do_restaurante)
     print(f'O restaurante {nome_restaurante} foi cadastrado')
-    input('Digite uma tecla para voltar ao menu')
+    input('Digite uma tecla para voltar ao menu ')
 
 def listar_restaurantes():
     os.system('cls' if os.name == 'nt' else 'clear')
     print('Listando restaurantes:')
+    print(f'{'Nome do restaurante'.ljust(22)} | {'Categoria'.ljust(20)} | Status')
+
     for restaurante in restaurantes:
-        print(f'- {restaurante}')
-    input('Digite uma tecla para voltar ao menu')
+       nome_restaurante = restaurante['nome']
+       categoria = restaurante['categoria']
+       ativo = restaurante['ativo']
+       ativo = 'ativado' if restaurante['ativo'] else 'desativado'
+       print(f'- {nome_restaurante.ljust(20)} | {categoria.ljust(20)} | {ativo}')
+    input('Digite uma tecla para voltar ao menu ')
 
 def ativar_restaurante():
     os.system('cls' if os.name == 'nt' else 'clear')
-    print('Função de ativar restaurante ainda não implementada.')
-    input('Digite uma tecla para voltar ao menu')
+    print('Alterando estado do restaurante')
+    nome_restaurante = input('Digite o nome do restaurante que deseja alterar o estado: ')
+    restaurante_encontrado = False
+
+    for restaurante in restaurantes:
+        if nome_restaurante == restaurante['nome']:
+            restaurante_encontrado = True
+            restaurante['ativo'] = not restaurante['ativo']
+            mensagem = f'O restaurante {nome_restaurante} foi ativado com sucesso' if restaurante['ativo'] else f'O restaurante {nome_restaurante} foi desativado com sucesso'
+            print(mensagem)
+
+    if not restaurante_encontrado:
+     print('O restaurante não foi encontrado.')
+    input('Digite uma tecla para voltar ao menu ')
 
 def main():
     while True:
