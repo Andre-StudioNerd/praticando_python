@@ -6,19 +6,32 @@ restaurantes = [{'nome':'Naruto Sushi', 'categoria':'Japonesa', 'ativo':False},
                 ]
 
 def exibir_nome_do_programa():
+    ''' Exibe o nome estilizado do programa na tela '''
     print('Sabor Express')
 
 def exibir_opcoes():
+    ''' Exibe as opções disponíveis no menu principal '''
     print('1. Cadastrar restaurante')
     print('2. Listar restaurantes')
     print('3. Ativar restaurante')
     print('4. Sair\n')
 
 def finalizar_app():
+    ''' Exibe mensagem de finalização do aplicativo '''
     os.system('cls' if os.name == 'nt' else 'clear')
     print('Finalizando o app')
 
 def cadastrar_restaurante():
+    ''' Essa função é responsável por cadastrar um novo restaurante
+
+    Inputs:
+    - Nome do restaurante
+    - Categoria
+
+    Outputs:
+    - Adiciona um novo restaurante a lista de restaurantes
+
+    '''
     os.system('cls' if os.name == 'nt' else 'clear')
     print('Cadastro de restaurante')
     nome_restaurante = input('Digite o nome do restaurante: ')
@@ -29,6 +42,11 @@ def cadastrar_restaurante():
     input('Digite uma tecla para voltar ao menu ')
 
 def listar_restaurantes():
+    ''' Lista os restaurantes presentes na lista
+
+    Outputs:
+    - Exibe a lista de restaurantes na tela
+    '''
     os.system('cls' if os.name == 'nt' else 'clear')
     print('Listando restaurantes:')
     print(f'{'Nome do restaurante'.ljust(22)} | {'Categoria'.ljust(20)} | Status')
@@ -42,6 +60,10 @@ def listar_restaurantes():
     input('Digite uma tecla para voltar ao menu ')
 
 def ativar_restaurante():
+    ''' Altera o estado ativo/desativado de um restaurante
+
+    Outputs:
+    - Exibe mensagem indicando o sucesso da operação'''
     os.system('cls' if os.name == 'nt' else 'clear')
     print('Alterando estado do restaurante')
     nome_restaurante = input('Digite o nome do restaurante que deseja alterar o estado: ')
@@ -59,6 +81,11 @@ def ativar_restaurante():
     input('Digite uma tecla para voltar ao menu ')
 
 def main():
+    ''' Solicita e executa a opção escolhida pelo usuário
+
+    Outputs:
+    - Executa a opção escolhida pelo usuário
+    '''
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
         exibir_nome_do_programa()
